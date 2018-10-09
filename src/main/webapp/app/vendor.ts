@@ -42,6 +42,12 @@ import {
     faHome
 } from '@fortawesome/free-solid-svg-icons';
 
+import { JitsiMeetJS } from '../vendor/jitsi/lib-jitsi-meet.min.js';
+import { JitsiConnection } from '../vendor/jitsi/lib-jitsi-meet.min.js';
+import { JitsiConference } from '../vendor/jitsi/lib-jitsi-meet.min.js';
+import { JitsiTrack } from '../vendor/jitsi/lib-jitsi-meet.min.js';
+import { JitsiTrackError } from '../vendor/jitsi/lib-jitsi-meet.min.js';
+
 // Adds the SVG icon to the library so you can use it in your page
 library.add(faUser);
 library.add(faSort);
