@@ -1,0 +1,42 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "io.blocko.myrealtutor",
+      "nativeLanguage": "ko"
+    },
+    "jhipsterVersion": "5.4.2",
+    "applicationType": "monolith",
+    "baseName": "MyRealTutor",
+    "packageName": "io.blocko.myrealtutor",
+    "packageFolder": "io/blocko/myrealtutor",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "hazelcast",
+    "enableHibernateCache": true,
+    "websocket": "spring-websocket",
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "mariadb",
+    "searchEngine": "elasticsearch",
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "gradle",
+    "enableSwaggerCodegen": true,
+    "jwtSecretKey": "MGZjM2M5YTgyY2Y3ODk5ZGJhY2JkYjI1MTA1MGI3NTE5MjA5ZDFiMzFkZjU0ZWZjYjk5MGYzMzRlYTRhNzFhYTRjNzIyZGMwNGUyNGRlMDZhM2M5MDJjNWQ4OGViOWZmMTgyMDAyNGQ5Njk1OGJkZmM2YTQ2NmFiNDQwYzNkMDc=",
+    "clientFramework": "angularX",
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "testFrameworks": [
+      "gatling",
+      "cucumber",
+      "protractor"
+    ],
+    "jhiPrefix": "mrt",
+    "enableTranslation": true,
+    "nativeLanguage": "ko",
+    "languages": [
+      "ko",
+      "en"
+    ]
+  }
+}
