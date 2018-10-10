@@ -7,7 +7,15 @@
       "root": "",
       "sourceRoot": "src/main/webapp",
       "projectType": "application",
-      "architect": {}
+      "architect": {
+          "build": {
+              "options": {
+                  "scripts": [
+                      "src/main/webapp/vendor/jitsi/lib-jitsi-meet.min.js"
+                  ]
+              }
+          }
+      }
     }
   },
   "defaultProject": "my-real-tutor",

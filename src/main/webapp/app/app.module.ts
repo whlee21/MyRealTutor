@@ -17,6 +17,7 @@ import { MyRealTutorAppRoutingModule } from './app-routing.module';
 import { MyRealTutorHomeModule } from './home/home.module';
 import { MyRealTutorAccountModule } from './account/account.module';
 import { MyRealTutorEntityModule } from './entities/entity.module';
+import { TutorModule } from './tutor/tutor.module';
 import * as moment from 'moment';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import { MrtMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent, ActiveMenuDirective, ErrorComponent } from './layouts';
@@ -30,7 +31,8 @@ import { MrtMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent
         MyRealTutorCoreModule,
         MyRealTutorHomeModule,
         MyRealTutorAccountModule,
-        MyRealTutorEntityModule
+        MyRealTutorEntityModule,
+        TutorModule
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
     declarations: [MrtMainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],
