@@ -50,6 +50,31 @@ module.exports = (options) => ({
             },
             // Ignore warnings about System.import in Angular
             { test: /[\/\\]@angular[\/\\].+\.js$/, parser: { system: true } },
+            {
+                // Transpile ES2015 (aka ES6) to ES5. Accept the JSX syntax by React
+                // as well.
+
+                // exclude: node_modules, // eslint-disable-line camelcase
+                loader: 'babel-loader',
+                options: {
+                    // XXX The require.resolve bellow solves failures to locate the
+                    // presets when lib-jitsi-meet, for example, is npm linked in
+                    // jitsi-meet. The require.resolve, of course, mandates the use
+                    // of the prefix babel-preset- in the preset names.
+                    presets: [
+                        [
+                            require.resolve('babel-preset-env'),
+
+                            // Tell babel to avoid compiling imports into CommonJS
+                            // so that webpack may do tree shaking.
+                            { modules: false }
+                        ],
+                        require.resolve('babel-preset-react'),
+                        require.resolve('babel-preset-stage-1')
+                    ]
+                },
+                test: /\.jsx?$/
+            }
         ]
     },
     plugins: [
