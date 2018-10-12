@@ -1,8 +1,4 @@
 import { Injectable } from '@angular/core';
-// import { JitsiMeetJS, JitsiConnection, JitsiConference, JitsiTrack, JitsiTrackError } from 'lib-jitsi-meet/dist/lib-jitsi-meet.min.js';
-// import { JitsiMeetJS, JitsiConnection, JitsiConference, JitsiTrack, JitsiTrackError } from 'lib-jitsi-meet/dist/lib-jitsi-meet.min';
-// const JitsiMeetJS = require('lib-jitsi-meet/dist/lib-jitsi-meet.min');
-import '../../vendor/jitsi/lib-jitsi-meet.min.js';
 
 declare var JitsiMeetJS: any;
 
@@ -10,11 +6,33 @@ declare var JitsiMeetJS: any;
     providedIn: 'root'
 })
 export class JitsiMeetService {
-    private options = {};
+    title = 'app';
+    domain = 'meet.jit.si';
+    options: any;
+    api: any;
+    connection: any;
 
     constructor() {
-        JitsiMeetJS.init();
-        const connection = new JitsiMeetJS.JitsiConnection(null, null, this.options);
-        console.log('connection ', connection);
+        this.options = {
+            roomName: 'JitsiMeetAPIExample',
+            width: 700,
+            height: 700,
+            parentNode: document.querySelector('#meet')
+        };
+        JitsiMeetJS.init(this.options);
+        this.connection = new JitsiMeetJS.JitsiConnection(null, null, this.options);
+
+        // this.options = {
+        //     roomName: 'JitsiMeetAPIExample',
+        //     width: 700,
+        //     height: 700,
+        //     parentNode: document.querySelector('#meet')
+        // };
+
+        // this.api = new JitsiMeetExternalAPI(this.domain, this.options);
+    }
+
+    printConnection() {
+        console.log('connection ', this.connection);
     }
 }

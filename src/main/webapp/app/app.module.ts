@@ -32,8 +32,8 @@ import { MrtMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent
         MyRealTutorHomeModule,
         MyRealTutorAccountModule,
         MyRealTutorEntityModule,
-        TutorModule
         // jhipster-needle-angular-add-module JHipster will add new module here
+        TutorModule
     ],
     declarations: [MrtMainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],
     providers: [

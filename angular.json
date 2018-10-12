@@ -11,7 +11,7 @@
         "build": {
             "options": {
                 "scripts": [
-                    "src/main/webapp/vendor/jitsi/lib-jitsi-meet.min.js"
+                    "src/main/webapp/vendor/jitsi/external_api.js"
                 ]
             }
         }
