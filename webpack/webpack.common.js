@@ -50,6 +50,47 @@ module.exports = (options) => ({
             },
             // Ignore warnings about System.import in Angular
             { test: /[\/\\]@angular[\/\\].+\.js$/, parser: { system: true } },
+                {
+                    // Transpile ES2015 (aka ES6) to ES5. Accept the JSX syntax by React
+                    // as well.
+
+                    exclude: [
+                        new RegExp(`${__dirname}/node_modules/(?!js-utils)`)
+                    ],
+                    loader: 'babel-loader',
+                    options: {
+                        // XXX The require.resolve bellow solves failures to locate the
+                        // presets when lib-jitsi-meet, for example, is npm linked in
+                        // jitsi-meet.
+                        plugins: [
+                            require.resolve('@babel/plugin-transform-flow-strip-types'),
+                            require.resolve('@babel/plugin-proposal-class-properties'),
+                            require.resolve(
+                                '@babel/plugin-proposal-export-default-from'),
+                            require.resolve(
+                                '@babel/plugin-proposal-export-namespace-from')
+                        ],
+                        presets: [
+                            [
+                                require.resolve('@babel/preset-env'),
+
+                                // Tell babel to avoid compiling imports into CommonJS
+                                // so that webpack may do tree shaking.
+                                { modules: false }
+                            ],
+                            require.resolve('@babel/preset-flow'),
+                            require.resolve('@babel/preset-react')
+                        ]
+                    },
+                    test: /\.jsx?$/
+                }, {
+                    // Expose jquery as the globals $ and jQuery because it is expected
+                    // to be available in such a form by multiple jitsi-meet
+                    // dependencies including lib-jitsi-meet.
+
+                    loader: 'expose-loader?$!expose-loader?jQuery',
+                    test: /\/node_modules\/jquery\/.*\.js$/
+                }
         ]
     },
     plugins: [
@@ -75,7 +116,10 @@ module.exports = (options) => ({
             { from: './src/main/webapp/favicon.ico', to: 'favicon.ico' },
             { from: './src/main/webapp/manifest.webapp', to: 'manifest.webapp' },
             // jhipster-needle-add-assets-to-webpack - JHipster will add/remove third-party resources in this array
-            { from: './src/main/webapp/robots.txt', to: 'robots.txt' }
+            { from: './src/main/webapp/robots.txt', to: 'robots.txt' },
+            { from: './node_modules/jquery/dist', to: 'jquery' },
+            { from: './src/main/webapp/vendor/jitsi/external_api.js', to: 'external_api.js' },
+            { from: './node_modules/lib-jitsi-meet/dist', to: 'lib-jitsi-meet' }
         ]),
         new MergeJsonWebpackPlugin({
             output: {
